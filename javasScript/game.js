@@ -171,3 +171,58 @@ function update() { /*funcion que actualiza el canvas*/
 }
 /*funcion que actualiza el canvas*/
 
+canvas.addEventListener('mousemove', (e) => { /*eventos que se ejecutan cuando el mouse se mueve en el canvas*/
+    const rect = canvas.getBoundingClientRect(); 
+    mousePos.x = e.clientX - rect.left; /*obtenemos la posicion del mouse en x*/
+    mousePos.y = e.clientY - rect.top; /*obtenemos la posicion del mouse en y*/
+
+    // Verificar colisión con objetos
+    objects.forEach((obj, index) => {
+        if (mousePos.x > obj.x && mousePos.x < obj.x + 40 && mousePos.y > obj.y && mousePos.y < obj.y + 40) { 
+            /*si el mouse colisiona con un objeto*/
+            if (obj.type === 'tesoro') score += 20; /*si el objeto es un tesoro sumamos 20 puntos*/
+            if (obj.type === 'joya') score += 5; /*si el objeto es una joya sumamos 5 puntos*/
+            objects.splice(index, 1); /*eliminamos el objeto*/
+        }
+    });
+
+    // Verificar colisión con piratas
+    pirates.forEach((pirate) => { /*recorremos los piratas*/
+        if (mousePos.x > pirate.x && mousePos.x < pirate.x + 40 && mousePos.y > pirate.y && mousePos.y < pirate.y + 40) { 
+            gameOver = true; /*si el mouse colisiona con un pirata el juego termina*/
+            showGameOverScreen(); /*mostramos la pantalla de juego terminado*/
+            gameMusic.pause(); /*pausamos la musica del juego*/
+        }
+    });
+
+    // Verificar colisión con cangrejos
+    crabs.forEach((crab, index) => { /*recorremos los cangrejos*/
+        if (mousePos.x > crab.x && mousePos.x < crab.x + 40 && mousePos.y > crab.y && mousePos.y < crab.y + 40) { 
+            score -= 10; /*si el mouse colisiona con un cangrejo restamos 10 puntos*/
+            crabs.splice(index, 1); /*eliminamos el cangrejo*/
+        }
+    });
+
+    // Verificar colisión con bolas de cañón
+    canonBalls.forEach((ball, index) => { /*recorremos las balas del canon*/
+        if (Math.hypot(ball.x - mousePos.x, ball.y - mousePos.y) < 6) { /*si la distancia entre la bala y el mouse es menor a 5*/
+            gameOver = true; /*el juego termina*/
+            showGameOverScreen(); /*mostramos la pantalla de juego terminado*/
+            gameMusic.pause(); /*pausamos la musica del juego*/
+        }
+    });
+
+    // Mover piratas hacia el ratón
+    pirates.forEach((pirate) => { /*recorremos los piratas*/
+        const angle = Math.atan2(mousePos.y - pirate.y, mousePos.x - pirate.x); /*calculamos el angulo entre el pirata y el mouse*/
+        pirate.x += Math.cos(angle) * 2; /*movemos el pirata en x*/
+        pirate.y += Math.sin(angle) * 2; /*movemos el pirata en y*/
+    });
+
+    // Disparar cañones hacia el ratón
+    canons.forEach((canon) => { /*recorremos los canones*/
+        if (Math.random() < 0.01) { /*si un numero aleatorio es menor a 0.01*/
+            shootCanon(canon, { x: mousePos.x, y: mousePos.y }); /*disparamos el canon hacia el mouse*/
+        }
+    });
+});
