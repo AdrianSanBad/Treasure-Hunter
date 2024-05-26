@@ -151,3 +151,23 @@ function drawCanonBalls() {
 }
 /*funcion que dibuja las balas del canon en el canvas*/
 
+function update() { /*funcion que actualiza el canvas*/
+    if (gameOver) return; /*si el juego termino no actualizamos el canvas*/
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height); /*limpiamos el canvas*/
+    drawBackground(); /*dibujamos el fondo*/
+    drawObjects(); /*dibujamos los objetos*/
+    drawPirates(); /*dibujamos los piratas*/
+    drawCrabs(); /*dibujamos los cangrejos*/
+    drawCanons(); /*dibujamos los canones*/
+    drawCanonBalls(); /*dibujamos las balas del canon*/
+
+    // Mostrar puntaje
+    ctx.fillStyle = '#000'; /*asignamos el color de la fuente*/
+    ctx.font = '20px Arial'; /*asignamos el tipo de fuente y el tamaño*/
+    ctx.fillText(`Score: ${score}`, 10, 30); /*mostramos el puntaje en el canvas*/
+
+    requestAnimationFrame(update); /*actualizamos el canvas*/
+}
+/*funcion que actualiza el canvas*/
+
