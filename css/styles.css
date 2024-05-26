@@ -16,10 +16,10 @@ main {
 }
 
 #titulo {
-    display: flex;
-    align-items:center;
+    display: flex; /*el contenido se muestra de manera horizontal*/
+    align-items:center; 
     justify-content:center;
         }
 .logo {
-    max-height: 50px; /* Ajusta el tamaño máximo según tus necesidades */
+    max-height: 50px; /*tamaño del logo de 50px*/
         }
