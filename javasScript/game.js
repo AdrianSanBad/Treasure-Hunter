@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -225,4 +226,35 @@ canvas.addEventListener('mousemove', (e) => { /*eventos que se ejecutan cuando e
             shootCanon(canon, { x: mousePos.x, y: mousePos.y }); /*disparamos el canon hacia el mouse*/
         }
     });
+});
+
+function showGameOverScreen() { /*funcion que muestra la pantalla de juego terminado*/
+    document.getElementById('finalScore').innerText = score; /*mostramos el puntaje final*/
+    gameOverScreen.style.display = 'block'; /*mostramos la pantalla de juego terminado*/
+}
+
+window.restartGame = function() { /*funcion que reinicia el juego*/
+//se reinician las variables
+    score = 0;
+    objects = [];
+    pirates = [];
+    crabs = [];
+    canons = [];
+    canonBalls = [];
+    gameOver = false;
+    gameOverScreen.style.display = 'none';
+    gameMusic.currentTime = 0;
+    gameMusic.play();
+    update();
+};
+
+setInterval(() => createObject('tesoro'), 1500); /*creamos un tesoro cada segundo y medio*/
+setInterval(() => createObject('joya'), 2000);  /*creamos una joya cada 2 segundos*/
+setInterval(createPirate, 2000); /*creamos un pirata cada 2 segundos*/
+setInterval(createCrab, 2500); /*creamos un cangrejo cada 2.5 segundos*/
+setInterval(createCanon, 5000); /*creamos un canon cada 5 segundos*/
+
+backgroundImage.onload = () => { /*cuando la imagen de fondo se cargue*/
+    update(); /*actualizamos el canvas*/
+};
 });
