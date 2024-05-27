@@ -7,23 +7,43 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        #gameCanvas{
+        #gameCanvas {
             cursor: url(img/pala.png), auto;
         }
-        </style>
+        .instructions {
+            background-color: #ffffff;
+            border: 2px solid #000;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            color: #000;
+        }
+    </style>
 </head>
 <body>
     <header id="titulo" class="bg-primary text-white text-center py-3">
         <h1>Treasure Hunters</h1>
         <img src="img/tesoro.png" alt="Logo" class="logo">
     </header>
-    <main class="d-flex justify-content-center align-items-center">
+    <main id="cuerpo" class="d-flex flex-column align-items-center">
         <canvas id="gameCanvas" width="800" height="400"></canvas>
+        <div class="instructions">
+            <h2>Bienvenido a esta búsqueda de tesoros</h2>
+            <p>Haz llegado a una isla pirata en la cual estás siendo buscado por sus habitantes. Recoge la mayor cantidad de tesoros sin que te atrapen.</p>
+            <ul>
+                <li><img src="img/joya.png" height="10px"> Las joyas te darán 5 puntos</li>
+                <li><img src="img/tesoro.png" height="10px"> Los tesoros te darán 20 puntos</li>
+                <li><img src="img/cangrejo.png" height="10px"> Los cangrejos te restan 10 puntos robándote tesoros</li>
+                <li><img src="img/pirata.png" height="10px"> Los piratas te perseguirán, ¡que no te atrapen!</li>
+                <li><img src="img/canon.png" height="10px"> Los barcos piratas te disparan, muévete de ahí</li>
+                <li><img src="img/pala.png" height="10px"> La pala te ayudará, deja de moverte y cavarás un hoyo, ¡no podrán verte!</li>
+            </ul>
+        </div>
     </main>
-    <footer class="bg-light text-center py-3">
+    <footer id="suelo" class="bg-light text-center py-3">
         <p>Creado por Adrian SB 2024</p>
+        <img src="https://avatars.githubusercontent.com/u/99064855?v=4" alt="creador" class="creador">
     </footer>
-    
     <script src="javasScript/game.js"></script>
 </body>
 </html>

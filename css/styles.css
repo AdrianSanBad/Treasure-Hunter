@@ -1,22 +1,35 @@
-body,html {
+body, html {
     height: 100%; /* Altura al 100% */
     margin: 0; /* margen 0 */
     font-family: Arial, sans-serif; /* Fuente Arial y sans-serif */
 }
-body{
+
+body {
     cursor: url(img/pala.png), auto; /*cursor personalizado*/
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 main {
-    height: calc(100% - 126px); /* Altura menos el header y el footer */
+    flex: 1;
+    padding: 20px 0; /* Añadir padding superior e inferior */
 }
 
 #gameCanvas {
-    border: 2px solid #000; /* Borde del canvas de color negro solido */ 
+    border: 2px solid #000; /* Borde del canvas de color negro solido */
     max-width: 100%; /* tamaño maximo al 100% */
-    max-height: 100%; 
-    cursor: url(img/pala.png),auto;
+    max-height: 100%;
+    cursor: url(img/pala.png), auto;
+    margin-bottom: 20px; /* Añadir margen inferior */
 }
+
 #gameOverScreen {
     display: none;
     position: absolute;
@@ -34,14 +47,41 @@ main {
     margin-top: 10px;
 }
 
-
 #titulo {
     display: flex; /*el contenido se muestra de manera horizontal*/
-    align-items:center; 
-    justify-content:center;
-        }
+    align-items: center;
+    justify-content: center;
+}
+
+#suelo {
+    display: flex; /*el contenido se muestra de manera horizontal*/
+    align-items: center;
+    justify-content: center;
+}
+
 .logo {
     max-height: 50px; /*tamaño del logo de 50px*/
-        }
+}
 
-        
+.creador {
+    max-height: 50px;
+    border-radius: 50%;
+}
+
+#cuerpo {
+    background-color: #585970;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instructions {
+    background-color: #ffffff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    color: #000;
+    max-width: 800px;
+    width: 100%;
+}
