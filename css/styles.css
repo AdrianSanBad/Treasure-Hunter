@@ -2,7 +2,9 @@ body,html {
     height: 100%; /* Altura al 100% */
     margin: 0; /* margen 0 */
     font-family: Arial, sans-serif; /* Fuente Arial y sans-serif */
-
+}
+body{
+    cursor: url(img/pala.png), auto; /*cursor personalizado*/
 }
 
 main {
@@ -11,9 +13,9 @@ main {
 
 #gameCanvas {
     border: 2px solid #000; /* Borde del canvas de color negro solido */ 
-    max-width: 100%; /* tamaño maximo al 100%*/
+    max-width: 100%; /* tamaño maximo al 100% */
     max-height: 100%; 
-    cursor: url('img/pala.png'), auto;
+    cursor: url(img/pala.png),auto;
 }
 #gameOverScreen {
     display: none;
