@@ -36,4 +36,4 @@ El juego cuenta con un sistema de puntuación que se muestra en la pantalla, per
 - *Recoger objetos*: Simplemente pasa sobre los tesoros y joyas para recogerlos.
 - *Evitar enemigos*: Mantente alejado de los cangrejos, piratas y balas de cañón.
 - *Reiniciar juego*: En caso de perder, presiona el botón "Volver a jugar" para reiniciar la partida.
--
+
